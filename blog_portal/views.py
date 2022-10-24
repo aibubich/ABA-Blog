@@ -18,6 +18,17 @@ class MainPageView(BaseView, ListView):
     context_object_name = "articles"
     template_name = "blog_portal/index.html"
 
+    def get(self, request):
+        article = Article.objects.all()
+        headline = {
+            'tab':'ABA Blogs Inicio',
+            'headline':'Bienvenido a ABA Blog!',
+            'sub':'Un trabajo de Agustina, Bruno y Alvaro para Coderhouse'
+
+        }
+        return render(request, self.template_name, {'headline':headline})
+    
+
 class About(BaseView, TemplateView):
 
     template_name = "blog_portal/about.html"
