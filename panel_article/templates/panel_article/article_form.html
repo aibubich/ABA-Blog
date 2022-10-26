@@ -1,0 +1,21 @@
+{% extends "blog_portal/base.html" %}
+{% load static %}
+{% block tab %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock %}
+
+{% block titulo%} Creación de un nuevo artículo {% endblock %}
+
+{% block portal %}
+<main>
+    <div>
+        <a type="button" href = "{% url 'main-page' %}" style="margin-top: 1em;" class="btn btn-sm btn-outline-primary" >Back to Panel</a>
+        <form method="post" enctype="multipart/form-data" style="margin-top: 1em;">
+            {% csrf_token %}
+            <center>{{ form.as_p }}</center>
+            <center><input type="submit" value="Create"> </center>  
+        </form>
+    </div>  
+</main>
+{% endblock %}

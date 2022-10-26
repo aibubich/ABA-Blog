@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, TemplateView, View
 from blog_portal.models import Article, Portal
+from panel_article import *
 
 def index(request):
     return render(request, 'blog_portal/index.html')
@@ -32,3 +33,16 @@ class MainPageView(BaseView, ListView):
 class About(BaseView, TemplateView):
 
     template_name = "blog_portal/about.html"
+
+
+class ArticleDetailView(TemplateView):
+
+    template_name = "blog_portal/articulo.html"
+#    model = Article
+#    context_object_name = "article"
+    
+    
+#    def get_context_data(self, **kwargs):
+#        context = super().get_context_data(**kwargs)
+#        context['portal'] = Portal.objects.order_by('date_updated').first()
+#        return context
