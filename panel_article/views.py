@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from django.urls import reverse_lazy
 from blog_portal.models import Article
 from blog_portal.views import BaseView
@@ -27,4 +27,13 @@ class ArticleCreateView(CreateView):
 class ArticleUpdateView(BaseView, UpdateView):
     model = Article
     fields = ['title', 'short_content', 'content', 'author','image', 'is_headline', 'image', 'date_published']
+    template_name = "panel_article/article_form.html"
+    success_url = reverse_lazy('main-page')
+
+
+#class ArticleDeleteView(LoginRequiredMixin, BaseView, DeleteView):
+
+class ArticleDeleteView(DeleteView):
+    model = Article
+    template_name = "panel_article/article_confirm_delete.html"
     success_url = reverse_lazy('main-page')

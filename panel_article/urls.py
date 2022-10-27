@@ -3,7 +3,7 @@ from django.contrib import admin
 from django.urls import path
 from blog_portal.views import ArticleDetailView, index as blog_index
 from blog_portal.views import MainPageView, About
-from panel_article.views import ArticleCreateView, ArticleUpdateView
+from panel_article.views import ArticleCreateView, ArticleUpdateView, PanelView, ArticleDeleteView
 from blog_portal.views import ArticleDetailView
 
 
@@ -15,4 +15,6 @@ urlpatterns = [
     path('articulo/', ArticleDetailView.as_view(), name='articulo'),
     path('article/create', ArticleCreateView.as_view(), name='article-create'),
     path('article/<pk>/update', ArticleUpdateView.as_view(), name ="article-update"),
+    path('articles/', PanelView.as_view(), name ="articles"),
+    path('article/<pk>/delete', ArticleDeleteView.as_view(), name ="article-delete"),
 ]
