@@ -53,11 +53,6 @@ class CategoryDeleteView(DeleteView):
     template_name = "panel_article/category_confirm_delete.html"
     success_url = reverse_lazy('category')
 
-class SearchPostByCategory(ListView):
-    def get_queryset(self):
-        post_category = self.request.GET.get('post-category')
-        return Article.objects.filter(category=post_category)
-
 
 class PublisherPanelView(BaseView, ListView):
     queryset = Publisher.objects.all()

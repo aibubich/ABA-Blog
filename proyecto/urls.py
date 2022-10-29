@@ -17,8 +17,8 @@ from django.contrib import admin
 from django.urls import path
 from blog_portal.views import ArticleDetailView, index as blog_index
 from blog_portal.views import MainPageView, About
-from panel_article.views import ArticleCreateView, ArticleUpdateView, PanelView, ArticleDeleteView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, CategoryPanelView, PublisherCreateView, PublisherDeleteView, PublisherPanelView, PublisherUpdateView, SearchPostByCategory, PublisherCreateView, PublisherDeleteView, PublisherPanelView, PublisherUpdateView
-from blog_portal.views import ArticleDetailView
+from panel_article.views import ArticleCreateView, ArticleUpdateView, PanelView, ArticleDeleteView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, CategoryPanelView, PublisherCreateView, PublisherDeleteView, PublisherPanelView, PublisherUpdateView, PublisherCreateView, PublisherDeleteView, PublisherPanelView, PublisherUpdateView
+from blog_portal.views import ArticleDetailView, SearchPostByCategory
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -39,5 +39,4 @@ urlpatterns = [
     path('publisher/create', PublisherCreateView.as_view(), name='publisher-create'),
     path('publisher/<pk>/update', PublisherUpdateView.as_view(), name ="publisher-update"),
     path('publisher/<pk>/delete', PublisherDeleteView.as_view(), name ="publisher-delete"),
-    path('busqueda/', SearchPostByCategory.as_view(), name ="busqueda"),
 ]
