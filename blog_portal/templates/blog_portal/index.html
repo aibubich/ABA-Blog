@@ -30,10 +30,11 @@
                 <div class="card mb-4">
                     <div class="card-header">Búsqueda</div>
                     <div class="card-body">
-                        <div class="input-group">
-                            <input class="form-control" type="text" placeholder="Ingrese texto a buscar..." aria-label="Ingrese texto a buscar.." aria-describedby="button-search" />
-                            <button class="btn btn-primary" id="button-search" type="button">Buscar</button>
-                        </div>
+                        <form action="{% url 'buscar_por_categoria/' %}" method="GET">
+                            {% csrf_token %}
+                            <input type="text" name="post-category">
+                            <input type="submit" value="Buscar">
+                        </form>
                     </div>
                 </div>
                 <!-- Categories widget-->
@@ -50,11 +51,13 @@
                             </div>
                             <div class="col-sm-6">
                                 <ul class="list-unstyled mb-0">
+                                    <li> <ref='category-create'></li>
                                     <li><a href="#!">Hábitos Sostenibles</a></li>
                                     <li><a href="#!">Movilidad Sostenible</a></li>
                                     <li><a href="#!">Educación Ambiental</a></li>
                                 </ul>
                             </div>
+                            <a class="btn btn-primary" href="{% url 'category' %}">Administracion de Categorias</a>
                         </div>
                     </div>
                 </div>
@@ -62,7 +65,7 @@
                 <div class="card mb-4">
                     <div class="card-header"><strong>Queres publicar notas en nuestro Blog?</strong></div>
                     <div class="card-body">Buscamos personas convencida de que un mundo mas sustentable es posible!</div>
-                    <button class="btn btn-primary" id="button-search" type="button">Registrate</button>
+                    <a class="btn btn-primary" href="{% url 'publisher' %}">Registrate!</a>
                 </div>
             </div>
         </div>

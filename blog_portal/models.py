@@ -1,17 +1,24 @@
+from email.policy import default
 from django.db import models
-from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
 
 
 class Publisher(models.Model):
-    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
-    avatar = models.ImageField(upload_to="avatars", null=True)
+    name = models.CharField(max_length=30)
+    surname = models.CharField(max_length=30)
+    country = models.CharField(max_length=30)
+    age = models.IntegerField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return f"{self.user.username}"
+        return f"{self.name}"
 
+class Category(models.Model):
+    name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"{self.name}"
 
 class Article(models.Model):
     title = models.CharField(max_length=100)
@@ -23,13 +30,8 @@ class Article(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
     date_published = models.DateTimeField()
+    category = models.ForeignKey(Category, on_delete=models.DO_NOTHING, default=1)
 
 
-class Portal(models.Model):
-    name = models.CharField(max_length=20)
-    social_network_one = models.URLField(null=True)
-    social_network_two = models.URLField(null=True)
-    email = models.EmailField(null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
+
 

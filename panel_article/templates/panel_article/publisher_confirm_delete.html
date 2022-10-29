@@ -1,0 +1,19 @@
+{% extends "blog_portal/base.html" %}
+{% load static %}
+{% block tab %}
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor-init.js' %}"></script>
+<script type="text/javascript" src="{% static 'ckeditor/ckeditor/ckeditor.js' %}"></script>
+{% endblock %}
+{% block titulo%} Borrando un editor{% endblock %}
+
+{% block portal %}
+<main class="flex-shrink-0">
+    <div class="container">
+        <a type="button" href = "{% url 'main-page' %}" style="margin-top: 1em;" class="btn btn-sm btn-outline-primary" >Back to Panel</a>
+        <form method="post">{% csrf_token %}
+            <p>Esta seguro que desea eliminar el editor {{publisher.name}}?</p>
+            <input type="submit" value="Confirm">
+        </form>
+    </div>
+</main>
+{% endblock %}

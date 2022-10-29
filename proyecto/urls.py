@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from blog_portal.views import ArticleDetailView, index as blog_index
 from blog_portal.views import MainPageView, About
-from panel_article.views import ArticleCreateView, ArticleUpdateView, PanelView, ArticleDeleteView
+from panel_article.views import ArticleCreateView, ArticleUpdateView, PanelView, ArticleDeleteView, CategoryCreateView, CategoryUpdateView, CategoryDeleteView, CategoryPanelView, PublisherCreateView, PublisherDeleteView, PublisherPanelView, PublisherUpdateView, SearchPostByCategory, PublisherCreateView, PublisherDeleteView, PublisherPanelView, PublisherUpdateView
 from blog_portal.views import ArticleDetailView
 
 urlpatterns = [
@@ -30,4 +30,14 @@ urlpatterns = [
     path('article/<pk>/update', ArticleUpdateView.as_view(), name ="article-update"),
     path('articles/', PanelView.as_view(), name ="articles"),
     path('article/<pk>/delete', ArticleDeleteView.as_view(), name ="article-delete"),
+    path('category/', CategoryPanelView.as_view(), name ="category"),
+    path('category/create', CategoryCreateView.as_view(), name='category-create'),
+    path('category/<pk>/update', CategoryUpdateView.as_view(), name ="category-update"),
+    path('category/<pk>/delete', CategoryDeleteView.as_view(), name ="category-delete"),
+    path('buscar_por_categoria/',SearchPostByCategory.as_view(), name="search-by-category-post"),
+    path('publisher/', PublisherPanelView.as_view(), name ="publisher"),
+    path('publisher/create', PublisherCreateView.as_view(), name='publisher-create'),
+    path('publisher/<pk>/update', PublisherUpdateView.as_view(), name ="publisher-update"),
+    path('publisher/<pk>/delete', PublisherDeleteView.as_view(), name ="publisher-delete"),
+    path('busqueda/', SearchPostByCategory.as_view(), name ="busqueda"),
 ]

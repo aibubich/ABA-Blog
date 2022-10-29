@@ -1,0 +1,35 @@
+{% extends "blog_portal/base.html" %}
+
+{% block portal %}
+<main class="flex-shrink-0">
+    <div class="container" style="margin-top: 1em;">
+     <a type="button" href="{% url 'publisher-create' %}" class="btn btn-sm btn-outline-primary">Nuevo Editor</a> 
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">Pais</th>
+      <th scope="col">Edad</th>
+    </tr>
+  </thead>
+        <tbody>
+          {%for publisher in publisher %}
+            <tr>
+            <th scope="row">{{publisher.id}}</th>
+            <td>{{publisher.name}}</td>
+            <td>{{publisher.surname}}</td>
+            <td>{{publisher.country}}</td>
+            <td>{{publisher.age}}</td>
+            <td>
+                <a type="button" href="{% url 'publisher-update' publisher.id %}" class="btn btn-sm btn-outline-warning">Editar</a>
+                <a type="button" href="{% url 'publisher-delete' publisher.id %}" class="btn btn-sm btn-outline-danger">Borrar</a>
+            </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+      </div>
+  </main>
+{% endblock %}

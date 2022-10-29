@@ -1,0 +1,30 @@
+{% extends "blog_portal/base.html" %}
+
+{% block portal %}
+<main class="flex-shrink-0">
+    <div class="container" style="margin-top: 1em;">
+     <a type="button" href="{% url 'category-create' %}" class="btn btn-sm btn-outline-primary">Nueva Categoria</a> 
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nombre</th>
+    </tr>
+  </thead>
+        <tbody>
+          {%for category in category %}
+            <tr>
+            <th scope="row">{{category.id}}</th>
+            <td>{{category.name}}</td>
+            <td>
+                <a type="button" href="{% url 'category-update' category.id %}" class="btn btn-sm btn-outline-warning">Editar</a>
+                <a type="button" href="{% url 'category-delete' category.id %}" class="btn btn-sm btn-outline-danger">Borrar</a>
+            </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+        
+      </div>
+  </main>
+{% endblock %}
