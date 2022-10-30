@@ -28,11 +28,11 @@
             <div class="col-lg-4">
                 <!-- Search widget-->
                 <div class="card mb-4">
-                    <div class="card-header">Búsqueda</div>
+                    <div class="card-header">Búsqueda por ID de Categoria</div>
                     <div class="card-body">
                         <form action="{% url 'search-by-category-post' %}" method="GET">
                             {% csrf_token %}
-                            <input type="text" name="post-category">
+                            <input type="search" name="post-category">
                             <input type="submit" value="Buscar">
                         </form>
                     </div>
